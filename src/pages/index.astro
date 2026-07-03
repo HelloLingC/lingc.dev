@@ -3,15 +3,65 @@
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>LingC's Homepage</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background-color: #000000;
+        color: #eeeeee;
+        font-family: "Trebuchet MS", Helvetica, sans-serif;
+      }
+
+      main {
+        display: flex;
+        flex-direction: row;
+      }
+
+      .left-con,
+      .right-con {
+        display: flex;
+        flex-direction: column;
+      }
+      video {
+        border: 0.3em solid #cb2957;
+      }
+
+      .comments {
+        font-family: "Courier New", monospace;
+      }
+
+      h1 {
+        font-size: 8em;
+      }
+
+      a {
+        color: #8c00ff;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="left-con">
+        <h1>LingC</h1>
+        <p class="comments">I will find quote someday</p>
+        <video controls autoplay muted loop playsinline width="500">
+          <source src="/lain.mp4" type="video/mp4" />
+        </video>
+      </div>
+
+      <div class="right-con">
+        <a style="font-size: 3em;" href="https://lycois.org/blog/1">》〉Blog</a>
+      </div>
+    </main>
+  </body>
 </html>

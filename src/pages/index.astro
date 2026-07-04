@@ -1,4 +1,5 @@
 ---
+import "../styles/main.css";
 import GithubHeatmap from "../components/GithubHeatmap.astro";
 ---
 
@@ -10,49 +11,12 @@ import GithubHeatmap from "../components/GithubHeatmap.astro";
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>LingC's Homepage</title>
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-      body {
-        background-color: #000000;
-        color: #eeeeee;
-        font-family: "Trebuchet MS", Helvetica, sans-serif;
-      }
-
-      main {
-        display: flex;
-        flex-direction: row;
-      }
-
-      .left-con,
-      .right-con {
-        display: flex;
-        flex-direction: column;
-      }
-      video {
-        border: 0.3em solid #cb2957;
-      }
-
-      .comments {
-        font-family: "Courier New", monospace;
-      }
-
-      h1 {
-        font-size: 8em;
-      }
-
-      a {
-        color: #8c00ff;
-      }
-    </style>
+    <style></style>
   </head>
   <body>
     <main>
       <div class="left-con">
-        <h1>LingC</h1>
+        <h1>LINGC</h1>
         <p class="comments">I will find quote someday</p>
         <video autoplay muted loop playsinline width="500">
           <source src="/lain.mp4" type="video/mp4" />
@@ -60,7 +24,9 @@ import GithubHeatmap from "../components/GithubHeatmap.astro";
       </div>
 
       <div class="right-con">
-        <a style="font-size: 3em;" href="https://lycois.org/">》〉MIAn bLog</a>
+        <h2>A hobbyist software developer</h2>
+        <p>Why do we constantly pursue pathetic things?</p>
+        <a class="btn" href="https://lycois.org/">▸▸ Blog</a>
         <GithubHeatmap />
       </div>
     </main>

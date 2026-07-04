@@ -1,0 +1,181 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(145, 145, 136, 0.48) 0%,
+      rgba(69, 69, 64, 0.38) 37%,
+      rgba(8, 8, 8, 0.96) 82%
+    ),
+    linear-gradient(
+      118deg,
+      rgba(255, 255, 255, 0.06),
+      transparent 34%,
+      rgba(0, 0, 0, 0.36) 72%
+    ),
+    #121210;
+  color: #eeeeee;
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
+
+body::before,
+body::after {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  content: "";
+}
+
+body::before {
+  top: -12px;
+  bottom: -12px;
+  z-index: 0;
+  background:
+    linear-gradient(
+      180deg,
+      transparent 0%,
+      transparent 47%,
+      rgba(235, 235, 225, 0.12) 49%,
+      rgba(235, 235, 225, 0.04) 52%,
+      transparent 55%,
+      transparent 100%
+    ),
+    repeating-linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.07) 0,
+      rgba(255, 255, 255, 0.07) 1px,
+      rgba(0, 0, 0, 0.22) 2px,
+      rgba(0, 0, 0, 0.22) 5px
+    ),
+    radial-gradient(
+      circle at 18% 31%,
+      rgba(255, 255, 255, 0.06) 0 1px,
+      transparent 2px
+    ),
+    radial-gradient(
+      circle at 74% 67%,
+      rgba(255, 255, 255, 0.05) 0 1px,
+      transparent 2px
+    ),
+    radial-gradient(
+      circle at 43% 82%,
+      rgba(0, 0, 0, 0.28) 0 1px,
+      transparent 2px
+    );
+  background-size:
+    100% 38px,
+    100% 7px,
+    17px 19px,
+    23px 29px,
+    31px 37px;
+  mix-blend-mode: screen;
+  opacity: 0.5;
+  animation: scan-drift 1.8s linear infinite;
+  will-change: background-position;
+}
+
+body::after {
+  z-index: 0;
+  background:
+    linear-gradient(
+      180deg,
+      transparent 0 61%,
+      rgba(210, 210, 200, 0.12) 61.1%,
+      transparent 61.8%
+    ),
+    radial-gradient(
+      ellipse at center,
+      transparent 0 45%,
+      rgba(0, 0, 0, 0.82) 100%
+    );
+  opacity: 0.82;
+  animation: signal-flicker 6s steps(4, end) infinite;
+}
+
+main {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  z-index: 1;
+}
+
+.right-con {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.6em;
+}
+
+video {
+  border: 0.3em solid #cb2957;
+  margin: 0.3em;
+}
+
+.comments {
+  font-family: "Courier New", monospace;
+}
+
+h1 {
+  color: #ed2370;
+  text-shadow:
+    6px 6px 0px #dcff2a,
+    12px 12px 4px #6b781f;
+  font-size: 8em;
+}
+
+a {
+  text-decoration: none;
+}
+
+.btn {
+  display: inline-block;
+  font-size: 1.5em;
+  padding: 0.3em;
+  color: #8c00ff;
+  border: 2px solid #8c00ff;
+}
+
+@keyframes scan-drift {
+  from {
+    background-position:
+      0 0,
+      0 0,
+      0 0,
+      0 0,
+      0 0;
+  }
+
+  to {
+    background-position:
+      0 38px,
+      0 28px,
+      17px 19px,
+      -23px 29px,
+      31px -37px;
+  }
+}
+
+@keyframes signal-flicker {
+  0%,
+  100% {
+    opacity: 0.78;
+    transform: translate3d(0, 0, 0);
+  }
+
+  35% {
+    opacity: 0.9;
+    transform: translate3d(0, -1px, 0);
+  }
+
+  68% {
+    opacity: 0.72;
+    transform: translate3d(1px, 0, 0);
+  }
+}

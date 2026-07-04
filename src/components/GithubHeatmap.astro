@@ -2,22 +2,54 @@
 const username = "hellolingc";
 ---
 
-<section class="github-card" aria-labelledby="github-title">
-  <h2 id="github-title">GitHub Contributions</h2>
+<section
+  class="github-card"
+  aria-labelledby="github-title"
+  data-github-heatmap
+  data-username={username}
+>
+  <div class="github-header">
+    <div>
+      <p class="github-kicker">github.com/{username}</p>
+      <h2 id="github-title">GitHub Contributions</h2>
+    </div>
 
-  <p id="github-total" class="github-total">Loading contributions…</p>
+    <p class="github-total" data-github-total>Loading...</p>
+  </div>
 
-  <div
-    id="github-heatmap"
-    class="github-heatmap"
-    aria-label={`GitHub contribution heatmap for ${username}`}
-  >
+  <div class="github-board" aria-live="polite">
+    <div class="github-months" data-github-months aria-hidden="true"></div>
+    <div class="github-grid-wrap">
+      <div class="github-weekdays" aria-hidden="true">
+        <span>Mon</span>
+        <span>Wed</span>
+        <span>Fri</span>
+      </div>
+      <div
+        class="github-heatmap"
+        data-github-cells
+        role="list"
+        aria-label={`GitHub contribution heatmap for ${username}`}
+      >
+      </div>
+    </div>
+  </div>
+
+  <div class="github-footer" aria-hidden="true">
+    <span>Less</span>
+    <span class="github-legend-cell is-empty"></span>
+    <span class="github-legend-cell is-low"></span>
+    <span class="github-legend-cell is-mid"></span>
+    <span class="github-legend-cell is-high"></span>
+    <span class="github-legend-cell is-max"></span>
+    <span>More</span>
   </div>
 </section>
 
 <script>
   type ContributionDay = {
     date: string;
+    weekday: number;
     contributionCount: number;
     color: string;
   };
@@ -31,16 +63,63 @@ const username = "hellolingc";
     weeks: ContributionWeek[];
   };
 
-  async function loadGithubHeatmap() {
-    const heatmap = document.querySelector("#github-heatmap");
-    const total = document.querySelector("#github-total");
+  const monthFormatter = new Intl.DateTimeFormat("en", { month: "short" });
+  const dateFormatter = new Intl.DateTimeFormat("en", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+  });
 
-    if (!heatmap || !total) return;
+  function formatContributionLabel(day: ContributionDay) {
+    const date = dateFormatter.format(new Date(`${day.date}T00:00:00`));
+    const count = day.contributionCount;
+    const contributionText = count === 1 ? "contribution" : "contributions";
 
-    const response = await fetch("/api/github-contributions");
-    const calendar: ContributionCalendar = await response.json();
+    return `${count} ${contributionText} on ${date}`;
+  }
 
-    total.textContent = `${calendar.totalContributions} contributions in the last year`;
+  function getLevel(day: ContributionDay) {
+    if (day.contributionCount === 0) return "0";
+
+    const color = day.color.toLowerCase();
+
+    if (color === "#9be9a8") return "1";
+    if (color === "#40c463") return "2";
+    if (color === "#30a14e") return "3";
+    if (color === "#216e39") return "4";
+
+    return "1";
+  }
+
+  function renderMonths(container: Element, weeks: ContributionWeek[]) {
+    container.replaceChildren();
+    (container as HTMLElement).style.setProperty(
+      "--github-week-count",
+      String(weeks.length),
+    );
+
+    let currentMonth = "";
+
+    weeks.forEach((week, index) => {
+      const firstDay = week.contributionDays[0];
+      const monthEl = document.createElement("span");
+
+      if (firstDay) {
+        const month = monthFormatter.format(new Date(`${firstDay.date}T00:00:00`));
+
+        if (month !== currentMonth) {
+          monthEl.textContent = month;
+          currentMonth = month;
+        }
+      }
+
+      monthEl.style.gridColumn = `${index + 1}`;
+      container.appendChild(monthEl);
+    });
+  }
+
+  function renderHeatmap(container: Element, calendar: ContributionCalendar) {
+    container.replaceChildren();
 
     for (const week of calendar.weeks) {
       const weekEl = document.createElement("div");
@@ -49,50 +128,213 @@ const username = "hellolingc";
       for (const day of week.contributionDays) {
         const dayEl = document.createElement("span");
         dayEl.className = "github-day";
+        dayEl.dataset.level = getLevel(day);
+        dayEl.style.gridRow = `${day.weekday + 1}`;
         dayEl.style.backgroundColor = day.color;
-        dayEl.title = `${day.date}: ${day.contributionCount} contributions`;
-        dayEl.setAttribute(
-          "aria-label",
-          `${day.date}: ${day.contributionCount} contributions`,
-        );
+        dayEl.title = formatContributionLabel(day);
+        dayEl.role = "listitem";
+        dayEl.setAttribute("aria-label", formatContributionLabel(day));
 
         weekEl.appendChild(dayEl);
       }
 
-      heatmap.appendChild(weekEl);
+      container.appendChild(weekEl);
     }
   }
 
-  loadGithubHeatmap();
+  async function loadGithubHeatmap(card: Element) {
+    const heatmap = card.querySelector("[data-github-cells]");
+    const total = card.querySelector("[data-github-total]");
+    const months = card.querySelector("[data-github-months]");
+    const username = (card as HTMLElement).dataset.username ?? "GitHub";
+
+    if (!heatmap || !total || !months) return;
+
+    try {
+      const response = await fetch("/api/github-contributions");
+
+      if (!response.ok) {
+        throw new Error("GitHub API request failed");
+      }
+
+      const calendar: ContributionCalendar = await response.json();
+      const contributionText =
+        calendar.totalContributions === 1 ? "contribution" : "contributions";
+
+      total.textContent = `${calendar.totalContributions} ${contributionText} in the last year`;
+
+      renderMonths(months, calendar.weeks);
+      renderHeatmap(heatmap, calendar);
+    } catch (error) {
+      total.textContent = `Could not load ${username}'s contributions.`;
+      heatmap.replaceChildren();
+      months.replaceChildren();
+    }
+  }
+
+  document
+    .querySelectorAll("[data-github-heatmap]")
+    .forEach((card) => loadGithubHeatmap(card));
 </script>
 
 <style>
   .github-card {
-    max-width: 760px;
+    width: min(100%, 760px);
+    margin-top: 1.5rem;
+    border: 0.2em solid #cb2957;
+    padding: 1rem;
+    color: #eeeeee;
+    background: #050505;
+  }
+
+  .github-header {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .github-kicker {
+    margin-bottom: 0.25rem;
+    color: #cb2957;
+    font-family: "Courier New", monospace;
+    font-size: 0.85rem;
+  }
+
+  h2 {
+    font-size: 1.45rem;
+    line-height: 1.1;
   }
 
   .github-total {
-    margin-bottom: 0.75rem;
+    font-family: "Courier New", monospace;
+    font-size: 0.9rem;
+    text-align: right;
+    color: #bdbdbd;
+  }
+
+  .github-board {
+    overflow-x: auto;
+    padding-bottom: 0.25rem;
+  }
+
+  .github-months {
+    display: grid;
+    grid-template-columns: repeat(var(--github-week-count, 53), 11px);
+    gap: 4px;
+    min-width: max-content;
+    margin-left: 2.4rem;
+    margin-bottom: 0.35rem;
+    color: #bdbdbd;
+    font-family: "Courier New", monospace;
+    font-size: 0.72rem;
+  }
+
+  .github-grid-wrap {
+    display: flex;
+    gap: 0.55rem;
+    min-width: max-content;
+  }
+
+  .github-weekdays {
+    display: grid;
+    grid-template-rows: repeat(7, 11px);
+    gap: 4px;
+    width: 1.85rem;
+    color: #bdbdbd;
+    font-family: "Courier New", monospace;
+    font-size: 0.68rem;
+    line-height: 11px;
     opacity: 0.75;
+  }
+
+  .github-weekdays span:nth-child(1) {
+    grid-row: 2;
+  }
+
+  .github-weekdays span:nth-child(2) {
+    grid-row: 4;
+  }
+
+  .github-weekdays span:nth-child(3) {
+    grid-row: 6;
   }
 
   .github-heatmap {
     display: flex;
     gap: 4px;
-    overflow-x: auto;
-    padding-block: 0.5rem;
+    min-width: max-content;
   }
 
-  .github-week {
-    display: flex;
-    flex-direction: column;
+  .github-heatmap :global(.github-week) {
+    display: grid;
+    grid-template-rows: repeat(7, 11px);
     gap: 4px;
   }
 
-  .github-day {
+  .github-heatmap :global(.github-day) {
     width: 11px;
     height: 11px;
     border-radius: 2px;
-    flex: 0 0 auto;
+    border: 1px solid rgb(255 255 255 / 0.08);
+  }
+
+  .github-heatmap :global(.github-day[data-level="0"]) {
+    background-color: #171717 !important;
+  }
+
+  .github-heatmap :global(.github-day:hover) {
+    outline: 1px solid #eeeeee;
+    outline-offset: 1px;
+  }
+
+  .github-footer {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    gap: 0.35rem;
+    margin-top: 0.8rem;
+    color: #bdbdbd;
+    font-family: "Courier New", monospace;
+    font-size: 0.72rem;
+  }
+
+  .github-legend-cell {
+    width: 11px;
+    height: 11px;
+    border-radius: 2px;
+    border: 1px solid rgb(255 255 255 / 0.08);
+  }
+
+  .is-empty {
+    background: #171717;
+  }
+
+  .is-low {
+    background: #9be9a8;
+  }
+
+  .is-mid {
+    background: #40c463;
+  }
+
+  .is-high {
+    background: #30a14e;
+  }
+
+  .is-max {
+    background: #216e39;
+  }
+
+  @media (max-width: 720px) {
+    .github-header {
+      align-items: start;
+      flex-direction: column;
+    }
+
+    .github-total {
+      text-align: left;
+    }
   }
 </style>

@@ -14,6 +14,7 @@ const query = `
           weeks {
             contributionDays {
               date
+              weekday
               contributionCount
               color
             }

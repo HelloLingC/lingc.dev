@@ -1,6 +1,8 @@
 import type { APIRoute } from "astro";
 import { env } from "cloudflare:workers";
 
+export const prerender = false;
+
 const GITHUB_USERNAME = "helloingc";
 
 const query = `

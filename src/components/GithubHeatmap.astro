@@ -37,7 +37,7 @@ const username = "hellolingc";
 
     if (!heatmap || !total) return;
 
-    const response = await fetch("/api/github-contributions.json");
+    const response = await fetch("/api/github-contributions");
     const calendar: ContributionCalendar = await response.json();
 
     total.textContent = `${calendar.totalContributions} contributions in the last year`;

@@ -3,7 +3,7 @@ import { env } from "cloudflare:workers";
 
 export const prerender = false;
 
-const GITHUB_USERNAME = "helloingc";
+const GITHUB_USERNAME = "hellolingc";
 
 const query = `
   query($username: String!) {

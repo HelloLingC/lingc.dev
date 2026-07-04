@@ -91,12 +91,22 @@ const username = "hellolingc";
     return "1";
   }
 
-  function renderMonths(container: Element, weeks: ContributionWeek[]) {
-    container.replaceChildren();
+  function getWeekday(day: ContributionDay) {
+    if (Number.isInteger(day.weekday)) return day.weekday;
+
+    return new Date(`${day.date}T00:00:00`).getDay();
+  }
+
+  function setWeekCount(container: Element, count: number) {
     (container as HTMLElement).style.setProperty(
       "--github-week-count",
-      String(weeks.length),
+      String(count),
     );
+  }
+
+  function renderMonths(container: Element, weeks: ContributionWeek[]) {
+    container.replaceChildren();
+    setWeekCount(container, weeks.length);
 
     let currentMonth = "";
 
@@ -120,26 +130,23 @@ const username = "hellolingc";
 
   function renderHeatmap(container: Element, calendar: ContributionCalendar) {
     container.replaceChildren();
+    setWeekCount(container, calendar.weeks.length);
 
-    for (const week of calendar.weeks) {
-      const weekEl = document.createElement("div");
-      weekEl.className = "github-week";
-
+    calendar.weeks.forEach((week, weekIndex) => {
       for (const day of week.contributionDays) {
         const dayEl = document.createElement("span");
         dayEl.className = "github-day";
         dayEl.dataset.level = getLevel(day);
-        dayEl.style.gridRow = `${day.weekday + 1}`;
+        dayEl.style.gridColumn = `${weekIndex + 1}`;
+        dayEl.style.gridRow = `${getWeekday(day) + 1}`;
         dayEl.style.backgroundColor = day.color;
         dayEl.title = formatContributionLabel(day);
         dayEl.role = "listitem";
         dayEl.setAttribute("aria-label", formatContributionLabel(day));
 
-        weekEl.appendChild(dayEl);
+        container.appendChild(dayEl);
       }
-
-      container.appendChild(weekEl);
-    }
+    });
   }
 
   async function loadGithubHeatmap(card: Element) {
@@ -221,8 +228,8 @@ const username = "hellolingc";
 
   .github-months {
     display: grid;
-    grid-template-columns: repeat(var(--github-week-count, 53), 11px);
-    gap: 4px;
+    grid-template-columns: repeat(var(--github-week-count, 53), var(--github-cell-size, 11px));
+    column-gap: var(--github-cell-gap, 4px);
     min-width: max-content;
     margin-left: 2.4rem;
     margin-bottom: 0.35rem;
@@ -239,8 +246,8 @@ const username = "hellolingc";
 
   .github-weekdays {
     display: grid;
-    grid-template-rows: repeat(7, 11px);
-    gap: 4px;
+    grid-template-rows: repeat(7, var(--github-cell-size, 11px));
+    row-gap: var(--github-cell-gap, 4px);
     width: 1.85rem;
     color: #bdbdbd;
     font-family: "Courier New", monospace;
@@ -262,20 +269,18 @@ const username = "hellolingc";
   }
 
   .github-heatmap {
-    display: flex;
-    gap: 4px;
+    display: grid;
+    grid-template-columns: repeat(var(--github-week-count, 53), var(--github-cell-size, 11px));
+    grid-template-rows: repeat(7, var(--github-cell-size, 11px));
+    grid-auto-flow: column;
+    gap: var(--github-cell-gap, 4px);
     min-width: max-content;
   }
 
-  .github-heatmap :global(.github-week) {
-    display: grid;
-    grid-template-rows: repeat(7, 11px);
-    gap: 4px;
-  }
-
   .github-heatmap :global(.github-day) {
-    width: 11px;
-    height: 11px;
+    display: block;
+    width: var(--github-cell-size, 11px);
+    height: var(--github-cell-size, 11px);
     border-radius: 2px;
     border: 1px solid rgb(255 255 255 / 0.08);
   }

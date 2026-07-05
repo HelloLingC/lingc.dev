@@ -187,6 +187,8 @@ const username = "hellolingc";
 <style>
   .github-card {
     width: min(100%, 760px);
+    max-width: 100%;
+    min-width: 0;
     margin-top: 1.5rem;
     border: 0.2em solid #cb2957;
     padding: 1rem;
@@ -222,7 +224,10 @@ const username = "hellolingc";
   }
 
   .github-board {
+    width: 100%;
+    max-width: 100%;
     overflow-x: auto;
+    overflow-y: hidden;
     padding-bottom: 0.25rem;
   }
 

@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lingc.dev/music.schema.json",
+  "title": "Homepage Music",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["songs"],
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "r2BaseUrl": {
+      "description": "Public Cloudflare R2 URL without a trailing slash.",
+      "type": "string",
+      "format": "uri"
+    },
+    "title": {
+      "type": "string",
+      "default": "Music"
+    },
+    "songs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["title", "artist", "src"],
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "artist": {
+            "type": "string"
+          },
+          "src": {
+            "description": "R2 object path, or a full https URL.",
+            "type": "string"
+          },
+          "cover": {
+            "description": "Optional cover image object path, or a full https URL.",
+            "type": "string"
+          },
+          "duration": {
+            "description": "Optional duration, like 3:42.",
+            "type": "string"
+          },
+          "link": {
+            "description": "Optional link to the song or artist.",
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      }
+    }
+  }
+}

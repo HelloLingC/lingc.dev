@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-labelledby="title desc">
+  <title id="title">Personal homepage abstract cover</title>
+  <desc id="desc">A calm profile layout represented with geometric interface elements.</desc>
+  <rect width="800" height="500" fill="#dde4de"/>
+  <rect x="82" y="60" width="636" height="380" rx="12" fill="#f7f6f1" stroke="#c7cec8"/>
+  <circle cx="185" cy="180" r="52" fill="#83998a"/>
+  <circle cx="185" cy="165" r="17" fill="#e8ece8"/>
+  <path d="M151 213c8-25 26-38 34-38s26 13 34 38" fill="#e8ece8"/>
+  <rect x="269" y="130" width="138" height="14" rx="7" fill="#3f4c43"/>
+  <rect x="269" y="165" width="322" height="6" rx="3" fill="#a3aaa4"/>
+  <rect x="269" y="185" width="284" height="6" rx="3" fill="#bdc1bd"/>
+  <rect x="269" y="217" width="70" height="28" rx="6" fill="#edf0ed" stroke="#d4d8d4"/>
+  <rect x="349" y="217" width="84" height="28" rx="6" fill="#edf0ed" stroke="#d4d8d4"/>
+  <rect x="443" y="217" width="78" height="28" rx="6" fill="#edf0ed" stroke="#d4d8d4"/>
+  <path d="M126 304h548" stroke="#dadbd7"/>
+  <rect x="126" y="338" width="154" height="62" rx="6" fill="#e8ece8"/>
+  <rect x="323" y="338" width="154" height="62" rx="6" fill="#e2e8e3"/>
+  <rect x="520" y="338" width="154" height="62" rx="6" fill="#dbe3dc"/>
+</svg>

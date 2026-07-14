@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-labelledby="title desc">
+  <title id="title">Lycois abstract cover</title>
+  <desc id="desc">A quiet editorial composition with a reading page and botanical circle.</desc>
+  <rect width="800" height="500" fill="#e9e6dd"/>
+  <circle cx="603" cy="128" r="78" fill="#bcc8be"/>
+  <path d="M603 53v150M528 128h150" stroke="#536b5e" stroke-width="2" opacity=".42"/>
+  <rect x="96" y="76" width="400" height="348" rx="8" fill="#f8f7f2" stroke="#cfcdc4"/>
+  <rect x="132" y="113" width="96" height="8" rx="4" fill="#536b5e"/>
+  <rect x="132" y="153" width="294" height="4" rx="2" fill="#aaa9a2"/>
+  <rect x="132" y="171" width="326" height="4" rx="2" fill="#c1c0b9"/>
+  <rect x="132" y="189" width="278" height="4" rx="2" fill="#c1c0b9"/>
+  <rect x="132" y="238" width="326" height="4" rx="2" fill="#aaa9a2"/>
+  <rect x="132" y="256" width="302" height="4" rx="2" fill="#c1c0b9"/>
+  <rect x="132" y="274" width="318" height="4" rx="2" fill="#c1c0b9"/>
+  <path d="M550 391c35-46 77-75 129-90-18 45-55 78-110 98" fill="none" stroke="#71887a" stroke-width="3"/>
+  <path d="M614 349c-8-23-5-44 8-64 10 20 8 41-8 64Zm30-20c4-22 16-39 36-50 0 23-12 40-36 50Z" fill="#a7b7aa"/>
+</svg>

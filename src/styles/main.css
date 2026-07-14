@@ -1,5 +1,3 @@
-/* quiet.css */
-
 /* =========================
    1. Design tokens
    ========================= */
@@ -17,7 +15,6 @@
   --accent: #536b5e;
   --accent-soft: #e2e9e4;
 
-  --code-bg: #ecebe5;
   --selection: #d8e2da;
 
   --content-width: 720px;
@@ -122,14 +119,6 @@ section + section {
   background: var(--surface);
   border: 1px solid var(--border-soft);
   border-radius: 50%;
-}
-
-.profile-kicker {
-  margin-bottom: 2px;
-  color: var(--text-muted);
-  font-size: 0.82rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
 }
 
 .profile-name {
@@ -239,11 +228,6 @@ strong {
   font-weight: 600;
 }
 
-small,
-.muted {
-  color: var(--text-muted);
-}
-
 a {
   color: var(--accent);
   text-decoration-color: color-mix(in srgb, var(--accent) 45%, transparent);
@@ -259,7 +243,7 @@ a:hover {
 }
 
 /* =========================
-   7. Article list
+   6. Article list
    ========================= */
 
 .post-list {
@@ -321,7 +305,7 @@ a:hover {
 }
 
 /* =========================
-   8. Projects
+   7. Projects
    ========================= */
 
 .projects-section {
@@ -432,158 +416,7 @@ a:hover {
 }
 
 /* =========================
-   9. Article content
-   ========================= */
-
-.article-header {
-  margin-bottom: 48px;
-}
-
-.article-meta {
-  color: var(--text-muted);
-  font-size: 0.88rem;
-}
-
-.article-content {
-  font-family:
-    "Source Serif 4", "Noto Serif CJK SC", "Songti SC", Georgia, serif;
-
-  font-size: 1.05rem;
-  line-height: 1.95;
-}
-
-.article-content > * {
-  max-width: 100%;
-}
-
-.article-content blockquote {
-  margin: 32px 0;
-  padding: 4px 0 4px 22px;
-
-  color: var(--text-muted);
-  border-left: 2px solid var(--border);
-}
-
-.article-content blockquote p:last-child {
-  margin-bottom: 0;
-}
-
-.article-content hr {
-  margin-block: 56px;
-  border: 0;
-  border-top: 1px solid var(--border);
-}
-
-.article-content ul,
-.article-content ol {
-  padding-left: 1.4em;
-}
-
-.article-content li {
-  margin-bottom: 0.45em;
-}
-
-/* =========================
-   9. Code
-   ========================= */
-
-code,
-pre {
-  font-family:
-    "SFMono-Regular", "Cascadia Code", "JetBrains Mono", ui-monospace, monospace;
-}
-
-:not(pre) > code {
-  padding: 0.16em 0.4em;
-  color: var(--heading);
-  background: var(--code-bg);
-  border-radius: 4px;
-  font-size: 0.88em;
-}
-
-pre {
-  overflow-x: auto;
-  margin-block: 28px;
-  padding: 20px 22px;
-
-  color: var(--text);
-  background: var(--code-bg);
-  border: 1px solid var(--border-soft);
-  border-radius: var(--radius);
-
-  font-size: 0.88rem;
-  line-height: 1.7;
-}
-
-pre code {
-  padding: 0;
-  background: transparent;
-}
-
-/* =========================
-   10. Cards
-   ========================= */
-
-.card {
-  padding: 24px;
-
-  background: var(--surface);
-  border: 1px solid var(--border-soft);
-  border-radius: var(--radius);
-}
-
-.card h3 {
-  margin-top: 0;
-}
-
-/* =========================
-   11. Buttons
-   ========================= */
-
-.button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  min-height: 42px;
-  padding: 8px 16px;
-
-  color: var(--surface);
-  background: var(--accent);
-  border: 1px solid var(--accent);
-  border-radius: 6px;
-
-  font-size: 0.9rem;
-  text-decoration: none;
-  cursor: pointer;
-
-  transition:
-    opacity var(--transition),
-    transform var(--transition);
-}
-
-.button:hover {
-  color: var(--surface);
-  opacity: 0.9;
-}
-
-.button:active {
-  transform: translateY(1px);
-}
-
-.button-secondary {
-  color: var(--text);
-  background: transparent;
-  border-color: var(--border);
-}
-
-.button-secondary:hover {
-  color: var(--heading);
-  background: var(--surface);
-}
-
-/* =========================
-   12. Footer
+   8. Footer
    ========================= */
 
 .site-footer {
@@ -596,7 +429,7 @@ pre code {
 }
 
 /* =========================
-   13. Responsive
+   9. Responsive
    ========================= */
 
 @media (max-width: 560px) {
@@ -631,9 +464,6 @@ pre code {
     grid-template-columns: 1fr;
   }
 
-  .article-content {
-    font-size: 1rem;
-  }
 }
 
 @media (min-width: 561px) and (max-width: 760px) {
@@ -643,7 +473,7 @@ pre code {
 }
 
 /* =========================
-   14. Dark mode
+   10. Dark mode
    ========================= */
 
 @media (prefers-color-scheme: dark) {
@@ -660,7 +490,6 @@ pre code {
     --accent: #9bb4a3;
     --accent-soft: #29332c;
 
-    --code-bg: #222522;
     --selection: #344239;
   }
 
@@ -674,7 +503,7 @@ pre code {
 }
 
 /* =========================
-   15. Accessibility
+   11. Accessibility
    ========================= */
 
 :focus-visible {

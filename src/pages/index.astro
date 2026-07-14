@@ -21,7 +21,7 @@ import { projects } from "../data/projects";
           <img
             class="profile-avatar"
             src="/favicon.svg"
-            alt="LingC 的头像"
+            alt="LingC's avatar"
             width="128"
             height="128"
           />
@@ -29,10 +29,10 @@ import { projects } from "../data/projects";
           <div class="profile-content">
             <h1 class="profile-name">LingC</h1>
             <p class="profile-description">
-              一名业余软件开发者。缓慢地学习，认真地创造；这里记录我对计算机、阅读和生活的思考，以及一些仍在生长的项目。
+              A software developer and a computer lover.
             </p>
 
-            <div class="social-links" aria-label="社交媒体">
+            <div class="social-links" aria-label="Social media">
               <a
                 href="https://github.com/hellolingc"
                 aria-label="GitHub profile"
@@ -120,9 +120,9 @@ import { projects } from "../data/projects";
       <main>
         <section>
           <div class="section-heading">
-            <h2>文章</h2>
+            <h2>Articles</h2>
             <a class="view-all-link" href="https://lycois.org/">
-              查看全部文章
+              View all articles
             </a>
           </div>
 
@@ -130,9 +130,12 @@ import { projects } from "../data/projects";
             <li class="post-item">
               <a class="post-link" href="#">
                 <div>
-                  <h3 class="post-title">我为什么开始学习操作系统</h3>
+                  <h3 class="post-title">
+                    Why I Started Learning Operating Systems
+                  </h3>
                   <p class="post-summary">
-                    从应用开发走向计算机底层时，我遇到的一些困惑。
+                    Questions I encountered while moving from application
+                    development toward the foundations of computing.
                   </p>
                 </div>
 
@@ -140,13 +143,12 @@ import { projects } from "../data/projects";
               </a>
             </li>
           </ul>
-
         </section>
 
         <section class="projects-section" aria-labelledby="projects-title">
           <div class="section-heading">
-            <h2 id="projects-title">我的项目</h2>
-            <p>持续打磨中的作品</p>
+            <h2 id="projects-title">Projects</h2>
+            <p>Ongoing work</p>
           </div>
 
           <div class="projects-grid">
@@ -163,7 +165,10 @@ import { projects } from "../data/projects";
                     />
                   </div>
                   <div class="project-content">
-                    <time class="project-started-at" datetime={project.startedAt}>
+                    <time
+                      class="project-started-at"
+                      datetime={project.startedAt}
+                    >
                       {project.startedAt}
                     </time>
                     <h3>{project.name}</h3>

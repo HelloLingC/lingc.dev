@@ -114,11 +114,11 @@ section + section {
 .profile-avatar {
   width: 128px;
   height: 128px;
-  padding: 26px;
   object-fit: cover;
   background: var(--surface);
-  border: 1px solid var(--border-soft);
+  border: 3px solid var(--surface);
   border-radius: 50%;
+  outline: 1px solid var(--border);
 }
 
 .profile-name {
@@ -406,6 +406,7 @@ a:hover {
 .project-content h3 {
   margin: 0 0 7px;
   font-size: 1rem;
+  transition: color var(--transition);
 }
 
 .project-content > p:last-child {
@@ -413,6 +414,15 @@ a:hover {
   color: var(--text-muted);
   font-size: 0.82rem;
   line-height: 1.65;
+  transition: color var(--transition);
+}
+
+.project-card:hover .project-content h3 {
+  color: var(--accent);
+}
+
+.project-card:hover .project-content > p:last-child {
+  color: var(--text);
 }
 
 /* =========================
@@ -442,7 +452,6 @@ a:hover {
   .profile-avatar {
     width: 88px;
     height: 88px;
-    padding: 18px;
   }
 
   main {

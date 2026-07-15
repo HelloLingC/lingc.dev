@@ -17,7 +17,7 @@ export const projects: Project[] = [
     imageAlt: "Abstract preview of a personal homepage",
   },
   {
-    name: "RISC 32-bit OS Kernel",
+    name: "RISC-V 32-bit OS Kernel",
     startedAt: "2026.8",
     description: "A lightweight, focused visualization of coding activity.",
     href: "https://github.com/hellolingc",

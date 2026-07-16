@@ -1,5 +1,6 @@
 ---
 import "../styles/main.css";
+import { Image } from "astro:assets";
 import GithubHeatmap from "../components/GithubHeatmap.astro";
 import { projects } from "../data/projects";
 ---
@@ -158,13 +159,26 @@ import { projects } from "../data/projects";
               projects.map((project) => (
                 <a class="project-card" href={project.href}>
                   <div class="project-media">
-                    <img
-                      src={project.image}
-                      alt={project.imageAlt}
-                      width="800"
-                      height="500"
-                      loading="lazy"
-                    />
+                    {
+                      typeof project.image === "string" ? (
+                        <img
+                          src={project.image}
+                          alt={project.imageAlt}
+                          width="800"
+                          height="500"
+                          loading="lazy"
+                        />
+                      ) : (
+                        <Image
+                          src={project.image}
+                          alt={project.imageAlt}
+                          widths={[320, 640, 960, 1600]}
+                          sizes="(max-width: 560px) 90vw, (max-width: 760px) 45vw, 231px"
+                          format="webp"
+                          loading="lazy"
+                        />
+                      )
+                    }
                   </div>
                   <div class="project-content">
                     <time

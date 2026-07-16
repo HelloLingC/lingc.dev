@@ -1,9 +1,13 @@
+import type { ImageMetadata } from "astro";
+import raspRobotcar from "../assets/projects/rasp_robotcar.jpg";
+import ros2Robotcar from "../assets/projects/ros2_robotcar.jpg";
+
 export interface Project {
   name: string;
   startedAt: string;
   description: string;
   href: string;
-  image: string;
+  image: string | ImageMetadata;
   imageAlt: string;
 }
 
@@ -13,8 +17,8 @@ export const projects: Project[] = [
     startedAt: "2026.8",
     description: "A personal space for writing, projects, and long-term growth.",
     href: "/",
-    image: "/projects/homepage.svg",
-    imageAlt: "Abstract preview of a personal homepage",
+    image: ros2Robotcar,
+    imageAlt: "ROS2 RobotCar",
   },
   {
     name: "RISC-V 32-bit OS Kernel",
@@ -30,7 +34,7 @@ export const projects: Project[] = [
     description:
       "A four-wheel differential-drive robot built with Raspberry Pi and STM32, featuring OpenCV lane following, YOLOv8 object detection, and a Next.js control dashboard.",
     href: "https://lycois.org/blog/2025/rasp-robot-car/en/",
-    image: "https://lycois.org/assets/projects/rasp_robotcar.jpg",
+    image: raspRobotcar,
     imageAlt: "Raspberry RobotCar",
   },
 ];

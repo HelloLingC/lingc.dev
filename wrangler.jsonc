@@ -1,0 +1,23 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "lingc-dev",
+  "compatibility_date": "2026-08-28",
+  "observability": {
+    "enabled": true
+  },
+  "assets": {
+    "directory": ".",
+    "exclude": [
+      "node_modules/**",
+      ".git/**",
+      ".github/**",
+      ".wrangler/**",
+      "package.json",
+      "package-lock.json",
+      "pnpm-lock.yaml",
+      "AGENTS.md",
+      "CLAUDE.md",
+      "README.md"
+    ]
+  }
+}

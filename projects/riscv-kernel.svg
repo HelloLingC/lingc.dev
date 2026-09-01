@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-labelledby="title desc">
+  <title id="title">RISC-V OS Kernel Cover</title>
+  <desc id="desc">Architectural diagram of a RISC-V 32-bit OS kernel showing registers, memory paging, and scheduler.</desc>
+  <defs>
+    <linearGradient id="rv-grad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#243128" />
+      <stop offset="100%" stop-color="#18201a" />
+    </linearGradient>
+    <pattern id="grid-pattern" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#2b392f" stroke-width="0.75" />
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="500" fill="url(#rv-grad)" />
+  <rect width="800" height="500" fill="url(#grid-pattern)" opacity="0.6" />
+
+  <!-- Outer Board Frame -->
+  <rect x="54" y="44" width="692" height="412" rx="14" fill="#1b241e" stroke="#36483c" stroke-width="1.5" />
+
+  <!-- Top bar / Chip header -->
+  <rect x="54" y="44" width="692" height="42" rx="14" fill="#243228" />
+  <rect x="54" y="74" width="692" height="12" fill="#243228" />
+  <circle cx="82" cy="65" r="5" fill="#f87171" />
+  <circle cx="98" cy="65" r="5" fill="#fbbf24" />
+  <circle cx="114" cy="65" r="5" fill="#4ade80" />
+  <text x="140" y="69" fill="#9db4a3" font-family="ui-monospace, monospace" font-size="13" font-weight="600">rv32ima · sv32 mmu · trap-vector</text>
+  <text x="686" y="69" text-anchor="end" fill="#5c7564" font-family="ui-monospace, monospace" font-size="12">0x80000000</text>
+
+  <!-- Left: Memory & Page Table Map -->
+  <g transform="translate(86, 112)">
+    <text x="0" y="0" fill="#c3d4c7" font-family="ui-monospace, monospace" font-size="12" font-weight="700" letter-spacing="1">VIRTUAL ADDRESS MAP</text>
+    
+    <!-- Virtual Memory Box -->
+    <rect x="0" y="14" width="180" height="46" rx="6" fill="#233127" stroke="#415747" stroke-width="1" />
+    <text x="12" y="34" fill="#a5c5ad" font-family="ui-monospace, monospace" font-size="11" font-weight="600">User Space (0x0)</text>
+    <text x="12" y="48" fill="#698270" font-family="ui-monospace, monospace" font-size="9">text · data · u-stack</text>
+
+    <rect x="0" y="68" width="180" height="46" rx="6" fill="#29392e" stroke="#4e6856" stroke-width="1" />
+    <text x="12" y="88" fill="#86efac" font-family="ui-monospace, monospace" font-size="11" font-weight="600">Kernel Space</text>
+    <text x="12" y="102" fill="#698270" font-family="ui-monospace, monospace" font-size="9">direct-mapped · k-stack</text>
+
+    <!-- Page table hierarchy node -->
+    <rect x="0" y="124" width="180" height="74" rx="6" fill="#1e2a21" stroke="#36493c" stroke-width="1" stroke-dasharray="3 3" />
+    <text x="12" y="144" fill="#9bb4a3" font-family="ui-monospace, monospace" font-size="10" font-weight="600">Two-Level Page Table</text>
+    <text x="12" y="162" fill="#5d7665" font-family="ui-monospace, monospace" font-size="9">VPN[1] (10b) ──► Root PT</text>
+    <text x="12" y="178" fill="#5d7665" font-family="ui-monospace, monospace" font-size="9">VPN[0] (10b) ──► Leaf PT</text>
+    <text x="12" y="191" fill="#7ba384" font-family="ui-monospace, monospace" font-size="8">PTE: [PPN | D A G U X W R V]</text>
+  </g>
+
+  <!-- Center: CPU Core & Trap Control -->
+  <g transform="translate(294, 112)">
+    <text x="0" y="0" fill="#c3d4c7" font-family="ui-monospace, monospace" font-size="12" font-weight="700" letter-spacing="1">HART 0 · PRIVILEGE MODES</text>
+
+    <!-- CPU Box -->
+    <rect x="0" y="14" width="220" height="184" rx="8" fill="#202c23" stroke="#48604f" stroke-width="1.5" />
+    
+    <!-- User Mode -->
+    <rect x="14" y="28" width="192" height="38" rx="5" fill="#18221b" stroke="#374b3d" />
+    <text x="24" y="46" fill="#93c5fd" font-family="ui-monospace, monospace" font-size="11" font-weight="600">U-Mode (User)</text>
+    <text x="24" y="58" fill="#5f7c69" font-family="ui-monospace, monospace" font-size="9">unprivileged execution</text>
+
+    <!-- Arrow / ecall -->
+    <path d="M 110 68 L 110 82" stroke="#a5c5ad" stroke-width="1.5" stroke-dasharray="2 2" />
+    <polygon points="107,80 110,86 113,80" fill="#a5c5ad" />
+    <text x="120" y="78" fill="#eab308" font-family="ui-monospace, monospace" font-size="9">ecall (syscall)</text>
+
+    <!-- Supervisor Mode -->
+    <rect x="14" y="88" width="192" height="96" rx="5" fill="#26372b" stroke="#5a7762" />
+    <text x="24" y="106" fill="#86efac" font-family="ui-monospace, monospace" font-size="11" font-weight="700">S-Mode (Kernel)</text>
+    
+    <g transform="translate(24, 116)" fill="#8ba892" font-family="ui-monospace, monospace" font-size="9.5">
+      <text x="0" y="10">sepc:   0x80001a40</text>
+      <text x="0" y="24">scause: 0x00000008 (Syscall)</text>
+      <text x="0" y="38">satp:   0x80002000 (SV32 ON)</text>
+      <text x="0" y="52">sstatus:SPP=U, SPIE=1, SIE=0</text>
+    </g>
+  </g>
+
+  <!-- Right: Process Scheduler / Output -->
+  <g transform="translate(542, 112)">
+    <text x="0" y="0" fill="#c3d4c7" font-family="ui-monospace, monospace" font-size="12" font-weight="700" letter-spacing="1">ROUND-ROBIN SCHEDULER</text>
+
+    <rect x="0" y="14" width="176" height="184" rx="8" fill="#1a241d" stroke="#36493c" stroke-width="1" />
+    
+    <!-- Process items -->
+    <rect x="12" y="26" width="152" height="32" rx="4" fill="#27382d" stroke="#52705b" />
+    <circle cx="24" cy="42" r="4" fill="#4ade80" />
+    <text x="36" y="43" fill="#ecfdf5" font-family="ui-monospace, monospace" font-size="10" font-weight="600">PID 1 · init (RUN)</text>
+
+    <rect x="12" y="66" width="152" height="32" rx="4" fill="#1e2a21" stroke="#384c3e" />
+    <circle cx="24" cy="82" r="4" fill="#fbbf24" />
+    <text x="36" y="83" fill="#cbd5e1" font-family="ui-monospace, monospace" font-size="10">PID 2 · sh (READY)</text>
+
+    <rect x="12" y="106" width="152" height="32" rx="4" fill="#1e2a21" stroke="#384c3e" />
+    <circle cx="24" cy="122" r="4" fill="#64748b" />
+    <text x="36" y="123" fill="#94a3b8" font-family="ui-monospace, monospace" font-size="10">PID 3 · test (SLEEP)</text>
+
+    <!-- Context switch annotation -->
+    <path d="M 88 144 L 88 156" stroke="#5c7964" stroke-width="1" stroke-dasharray="2 2" />
+    <text x="88" y="172" text-anchor="middle" fill="#7ea588" font-family="ui-monospace, monospace" font-size="9">swtch(&amp;old, &amp;new)</text>
+  </g>
+
+  <!-- Bottom: Terminal Kernel Output -->
+  <g transform="translate(86, 334)">
+    <rect x="0" y="0" width="632" height="98" rx="8" fill="#131a15" stroke="#2d3d31" stroke-width="1" />
+    <circle cx="20" cy="18" r="4" fill="#4ade80" />
+    <text x="34" y="21" fill="#718e77" font-family="ui-monospace, monospace" font-size="10" font-weight="600">UART0 CONSOLE</text>
+    
+    <g transform="translate(20, 36)" fill="#86efac" font-family="ui-monospace, monospace" font-size="10" opacity="0.9">
+      <text x="0" y="14"><tspan fill="#52795d">[  0.000000] </tspan>Booting RISC-V 32-bit OS Kernel (RV32IMA)...</text>
+      <text x="0" y="30"><tspan fill="#52795d">[  0.001420] </tspan>Memory: 128MB RAM detected | SV32 Paging enabled</text>
+      <text x="0" y="46"><tspan fill="#52795d">[  0.003180] </tspan>Trap handler initialized: mtvec/stvec mapped</text>
+    </g>
+  </g>
+</svg>

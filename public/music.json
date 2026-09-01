@@ -1,6 +1,0 @@
-{
-  "$schema": "./music.schema.json",
-  "r2BaseUrl": "https://music.lingc.dev",
-  "title": "LingC Radio",
-  "songs": []
-}

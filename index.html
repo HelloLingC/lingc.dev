@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="icon" href="favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@1,6..72,400..600&family=Playfair+Display:ital,wght@1,500;1,600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles/main.css?v=6" />
+  </head>
+  <body>
+    <div class="site">
+      <header class="site-header">
+        <div class="profile">
+          <img
+            class="profile-avatar"
+            src="avatar.jpg"
+            alt="LingC's avatar"
+            width="128"
+            height="128"
+            loading="eager"
+            decoding="async"
+          />
+
+          <div class="profile-content">
+            <h1 class="profile-name">LingC</h1>
+            <p class="profile-description">
+              I build software and obsess over computer science.
+            </p>
+            <p class="profile-motto">
+              <span class="motto-love" style="color: var(--motto-love, #e05252)">Love.</span>
+              <span class="motto-build" style="color: var(--motto-build, #e67e22)">Build.</span>
+              <span class="motto-repeat" style="color: var(--motto-repeat, #3b82f6)">Repeat.</span>
+              <span class="motto-icons" aria-hidden="true">
+                <svg class="motto-icon motto-heart" viewBox="0 0 24 24" fill="currentColor" style="color: var(--motto-love, #e05252)"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                <svg class="motto-icon motto-hammer" viewBox="0 0 24 24" fill="currentColor" style="color: var(--motto-build, #e67e22)"><path d="M20.84 6.84l-2.68-2.68a1.2 1.2 0 0 0-1.7 0L14.6 6l1.7 1.7-1.42 1.41L11.7 5.94a1.2 1.2 0 0 0-1.7 0l-1.41 1.41a1.2 1.2 0 0 0 0 1.7l3.18 3.18-8.06 8.06a1.8 1.8 0 0 0 0 2.55l.7.7a1.8 1.8 0 0 0 2.55 0l8.06-8.06 3.18 3.18a1.2 1.2 0 0 0 1.7 0l1.41-1.41a1.2 1.2 0 0 0 0-1.7l-3.18-3.18 1.41-1.42 1.7 1.7 1.84-1.84a1.2 1.2 0 0 0 0-1.7z"/></svg>
+              </span>
+            </p>
+
+            <div class="social-links" aria-label="Social media">
+              <a
+                href="https://github.com/hellolingc"
+                aria-label="GitHub profile"
+                class="github-link"
+              >
+                <svg
+                  role="img"
+                  viewBox="0 0 24 24"
+                  width="22"
+                  height="22"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <title>GitHub</title>
+                  <path
+                    d="M12 .7a11.5 11.5 0 0 0-3.64 22.41c.58.11.79-.25.79-.56v-2.24c-3.22.7-3.9-1.37-3.9-1.37-.52-1.34-1.28-1.7-1.28-1.7-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.57-.29-5.27-1.28-5.27-5.68 0-1.26.45-2.28 1.18-3.08-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.16 1.18A10.9 10.9 0 0 1 12 6.13c.98 0 1.95.13 2.87.39 2.2-1.49 3.16-1.18 3.16-1.18.63 1.58.23 2.75.11 3.04.74.8 1.18 1.82 1.18 3.08 0 4.41-2.7 5.38-5.28 5.67.42.36.78 1.06.78 2.14v3.28c0 .31.21.68.8.56A11.5 11.5 0 0 0 12 .7Z"
+                  ></path>
+                </svg>
+                GitHub
+              </a>
+
+              <a
+                href="https://x.com/mutta02"
+                aria-label="X profile"
+                class="x-link"
+              >
+                <svg
+                  role="img"
+                  viewBox="0 0 24 24"
+                  width="22"
+                  height="22"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <title>X</title>
+                  <path
+                    d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932 6.064-6.932zm-1.292 19.492h2.039L6.486 3.24H4.298l13.311 17.405z"
+                  ></path>
+                </svg>
+                X
+              </a>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <section>
+          <div class="section-heading">
+            <div>
+              <h2>Featured Writing</h2>
+              <p class="section-subtitle">
+                I post most of my articles on <a href="https://lycois.org/">my personal blog</a>.
+              </p>
+            </div>
+          </div>
+
+          <ul class="post-list">
+            <li class="post-item">
+              <a class="post-link" href="#">
+                <time class="post-date">2026.07.15</time>
+                <h3 class="post-title">
+                  Why I Started Learning Operating Systems
+                </h3>
+              </a>
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <div class="section-heading">
+            <div>
+              <h2>Videos</h2>
+              <p class="section-subtitle">
+                I share video logs and project demos on
+                <a
+                  href="https://www.youtube.com/@mutta02"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="YouTube channel"
+                  class="inline-badge-btn youtube-link"
+                >
+                  <svg
+                    role="img"
+                    viewBox="0 0 24 24"
+                    width="16"
+                    height="16"
+                    fill="#ff0033"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <title>YouTube</title>
+                    <path
+                      d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"
+                    ></path>
+                  </svg>
+                  YouTube
+                </a>
+                and
+                <a
+                  href="https://space.bilibili.com/15384672"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Bilibili profile"
+                  class="inline-badge-btn bilibili-link"
+                >
+                  <svg
+                    role="img"
+                    viewBox="0 0 24 24"
+                    width="16"
+                    height="16"
+                    fill="#00aeec"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <title>Bilibili</title>
+                    <path
+                      d="M18.223 3.086a1.25 1.25 0 0 1 0 1.768L17.08 5.996h1.17A3.75 3.75 0 0 1 22 9.747v7.5a3.75 3.75 0 0 1-3.75 3.75H5.75A3.75 3.75 0 0 1 2 17.247v-7.5a3.75 3.75 0 0 1 3.75-3.75h1.166L5.775 4.855a1.25 1.25 0 1 1 1.767-1.768l2.652 2.652c.079.079.145.165.198.257h3.213c.053-.092.12-.18.199-.258l2.651-2.652a1.25 1.25 0 0 1 1.768 0zm.027 5.42H5.75a1.25 1.25 0 0 0-1.247 1.157l-.003.094v7.5c0 .659.51 1.199 1.157 1.246l.093.004h12.5a1.25 1.25 0 0 0 1.247-1.157l.003-.093v-7.5c0-.69-.56-1.25-1.25-1.25zm-10 2.5c.69 0 1.25.56 1.25 1.25v1.25a1.25 1.25 0 1 1-2.5 0v-1.25c0-.69.56-1.25 1.25-1.25zm7.5 0c.69 0 1.25.56 1.25 1.25v1.25a1.25 1.25 0 1 1-2.5 0v-1.25c0-.69.56-1.25 1.25-1.25z"
+                    ></path>
+                  </svg>
+                  Bilibili
+                </a>.
+              </p>
+            </div>
+          </div>
+
+          <ul class="post-list">
+            <li class="post-item">
+              <a class="post-link" href="https://www.youtube.com/@mutta02" target="_blank" rel="noopener noreferrer">
+                <time class="post-date">2025.09.28</time>
+                <h3 class="post-title">
+                  Raspberry Pi & STM32 Autonomous RobotCar Build & Demo
+                </h3>
+              </a>
+            </li>
+          </ul>
+        </section>
+
+        <section class="projects-section" aria-labelledby="projects-title">
+          <div class="section-heading">
+            <h2 id="projects-title">Projects</h2>
+          </div>
+
+          <!-- Series: Crafting from Scratch -->
+          <div class="project-series">
+            <div class="series-header">
+              <div class="series-badge-row">
+                <span class="series-badge">Series</span>
+                <h3 class="series-title">Crafting from Scratch</h3>
+              </div>
+              <p class="series-subtitle">
+                A deep dive into fundamental software systems built from first principles.
+              </p>
+            </div>
+
+            <div class="series-grid">
+              <!-- Series Project 1: RISC-V OS Kernel -->
+              <a
+                class="project-card"
+                href="https://github.com/hellolingc"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <div class="project-media">
+                  <img
+                    src="projects/riscv-kernel.svg"
+                    alt="RISC-V OS Kernel architectural diagram"
+                    width="800"
+                    height="500"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="project-content">
+                  <time class="project-started-at" datetime="2026.8">2026.8</time>
+                  <h3>RISC-V OS Kernel</h3>
+                  <p>A monolithic Unix-like OS kernel for RISC-V with virtual memory management, preemptive scheduling, and system calls.</p>
+                </div>
+              </a>
+
+              <!-- Series Project 2: Stack-based Typed Language -->
+              <a
+                class="project-card"
+                href="https://github.com/hellolingc"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <div class="project-media">
+                  <img
+                    src="projects/typed-language.svg"
+                    alt="Stack-based Typed Language type system and bytecode diagram"
+                    width="800"
+                    height="500"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="project-content">
+                  <time class="project-started-at" datetime="2026.8">2026.8</time>
+                  <h3>Stack-based Typed Language</h3>
+                  <p>A statically typed concatenative language featuring stack effect inference, bytecode compilation, and a lightweight VM.</p>
+                </div>
+              </a>
+
+              <!-- Series Project 3: Git VCS Implementation -->
+              <a
+                class="project-card"
+                href="https://github.com/hellolingc"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <div class="project-media">
+                  <img
+                    src="projects/git-vcs.svg"
+                    alt="Git VCS object database and commit DAG diagram"
+                    width="800"
+                    height="500"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="project-content">
+                  <time class="project-started-at" datetime="2026.9">2026.9</time>
+                  <h3>Git VCS Implementation</h3>
+                  <p>A content-addressable version control system implementing Git object storage, staging index, and tree diffing algorithms.</p>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <div class="projects-grid">
+            <!-- Standalone Project 1: ROS2 RobotCar -->
+            <a class="project-card" href="/">
+              <div class="project-media">
+                <img
+                  src="projects/ros2_robotcar.jpg"
+                  alt="ROS2 RobotCar"
+                  width="800"
+                  height="500"
+                  loading="lazy"
+                />
+              </div>
+              <div class="project-content">
+                <time class="project-started-at" datetime="2026.8">2026.8</time>
+                <h3>ROS2 RobotCar</h3>
+                <p>An autonomous mobile robot platform powered by ROS2, micro-ROS, and SLAM navigation.</p>
+              </div>
+            </a>
+
+            <!-- Standalone Project 2: Raspberry RobotCar -->
+            <a
+              class="project-card project-card--full"
+              href="https://lycois.org/blog/2025/rasp-robot-car/"
+            >
+              <div class="project-media project-media-split">
+                <div class="project-media-item">
+                  <img
+                    src="projects/rasp_robotcar.jpg"
+                    alt="Hardware & Sensors"
+                    width="800"
+                    height="450"
+                    loading="lazy"
+                  />
+                  <span class="project-media-label">Hardware & Sensors</span>
+                </div>
+                <div class="project-media-item">
+                  <img
+                    src="projects/rasp_robotcar_console.png"
+                    alt="RoboInspector Console"
+                    width="960"
+                    height="540"
+                    loading="lazy"
+                  />
+                  <span class="project-media-label">RoboInspector Console</span>
+                </div>
+              </div>
+              <div class="project-content">
+                <time class="project-started-at" datetime="2025.9">2025.9</time>
+                <h3>Raspberry RobotCar</h3>
+                <p>
+                  A four-wheel differential-drive robot built with Raspberry Pi and STM32, featuring OpenCV lane following, YOLOv8 object detection, and a Next.js control dashboard.
+                </p>
+              </div>
+            </a>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">© 2026 LingC · Love. Build. Repeat.</footer>
+    </div>
+  </body>
+</html>

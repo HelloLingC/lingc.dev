@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "LingC's personal website",
   "scripts": {
-    "dev": "npx serve ."
+    "dev": "npx serve .",
+    "deploy": "npx wrangler pages deploy ."
   }
 }
